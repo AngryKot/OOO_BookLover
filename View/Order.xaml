@@ -1,0 +1,102 @@
+﻿<Window x:Class="BooksSharp.View.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksSharp.View"
+        mc:Ignorable="d"
+               Title="Заказ" Height="450" Width="1100" MinHeight="450" MinWidth="1100">
+    <Grid Background="#f9f3ee">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Заголовок-->
+        <Grid Grid.Row="0" Background="#b48d71">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="/Resources/logo.png" Stretch="Fill" Width="80" />
+            <TextBlock Text="Оформление заказа"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Title}"/>
+            <Button x:Name="buttonNavigation" Grid.Column="2" Background="#FFFF9A9A" Content="Назад" Margin="15" Style="{StaticResource Title}" Foreground="White" Click="buttonNavigation_Click" />
+
+
+        </Grid>
+
+        <!--Функциональная часть-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.3*"/>
+            </Grid.RowDefinitions>
+
+            <!--лево - список товаров-->
+            <ListBox Background="#f9f3ee" x:Name="listBoxProductsInOrder"  Grid.Row="1" Grid.Column="0">
+                <ListBox.ContextMenu>
+                    <ContextMenu Name="cmAddInOrder">
+                        <MenuItem Name="miAddInOrder" Header="Добавить в корзину" />
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="500"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+                            <!--фото товара в заказе-->
+                            <Image Source="{Binding Path=ProductExtendedInOrder.ProductPhotoPath}" Width="100" Height="100" Stretch="Uniform" Grid.Column="0"/>
+                            <!--лписание товара-->
+                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductArticle}" Visibility="Collapsed"/>
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductName}" Style="{StaticResource Title}"/>
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductDiscription}" Style="{StaticResource Normal}"/>
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductManufacturer, StringFormat=Производитель: {0}}" Style="{StaticResource Normal}"/>
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductCost, StringFormat=Цена: {0} руб.}" Style="{StaticResource Normal}" />
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.Product.ProductDiscount, StringFormat=Скидка: {0} %}" Style="{StaticResource Normal}"/>
+                                <TextBlock Text="{Binding Path=ProductExtendedInOrder.ProductCostWithDiscount, StringFormat=Цена со скидкой: {0} руб.}" Style="{StaticResource Normal}"/>
+
+
+                            </StackPanel>
+
+                            <!--Управление количеством-->
+                            <StackPanel Grid.Column="2" Orientation="Vertical">
+                                <TextBox Text="{Binding countProductInOrder}" Style="{StaticResource Title}" TextChanged="TextBox_TextChanged" />
+                                <Button x:Name="butDeleteProduct" Content="Удалить товар" Click="butDeleteProduct_Click" />
+                            </StackPanel>
+                        </Grid>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                <TextBlock Text="Информация" Style="{StaticResource Title}" HorizontalAlignment="Center"/>
+                <TextBlock  x:Name="tbSummaTotal" Text="Стоимость заказа" Style="{StaticResource Normal}"/>
+
+                <TextBlock  Name="tbSummaWithDiscount" Style="{StaticResource Normal}"/>
+
+                <TextBlock  Name="tbSummaDiscount" Style="{StaticResource Normal}"/>
+
+                <TextBlock Text="Выбор пункта выдачи" Style="{StaticResource Normal}"/>
+                <ComboBox Name="cbPoint" DisplayMemberPath="PointAddress"/>
+
+                <TextBlock  Text="ФИО получателя" Style="{StaticResource Normal}"/>
+                <TextBox x:Name="tbFIO"></TextBox>
+
+            </StackPanel>
+            <Button x:Name="butCreateOrder" Background="#FFFF9A9A" Foreground="White" Grid.Column="1" Grid.Row="2" Content="Оформить заказ" Click="butCreateOrder_Click" Style="{StaticResource Normal}"/>
+            <Image   x:Name="imgQRCode" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="70" Height="70"/>
+        </Grid>
+    </Grid>
+</Window>

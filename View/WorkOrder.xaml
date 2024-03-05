@@ -1,0 +1,121 @@
+﻿<Window x:Class="BooksSharp.View.WorkOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksSharp.View"
+        mc:Ignorable="d"
+              Title="Работа с заказами" Height="550" Width="1000" Loaded="Window_Loaded" MinHeight="550" MinWidth="1000">
+    <Grid Background="#f9f3ee">
+        <!--Макет окна-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Заголовок-->
+        <Grid Grid.Row="0" Background="#b48d71" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Resources/logo.png" Height="80" Stretch="Fill" Width="80"/>
+            <TextBlock Text="Работа с заказами" Style="{StaticResource Title}" Grid.Column="1"/>
+            <Button x:Name="buttonNavigate" Style="{StaticResource Title}" Content="Назад" 
+                                   Grid.Column="2" HorizontalAlignment="Stretch" Margin="20,0,20,0" 
+                                   Height="52" Click="buttonNavigate_Click" Background="#FFFF9A9A" Foreground="White"/>
+        </Grid>
+
+        <!--Функциональная часть-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <!--Список заказов-->
+            <ListView Background="#f9f3ee" x:Name="listViewOrders" Grid.Row="1" HorizontalAlignment="Stretch" 
+                      Margin="10 10" SelectionChanged="listViewOrders_SelectionChanged" ItemContainerStyle="{StaticResource ListBoxItemStyle}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  Header="Номер заказа"
+                                                 DisplayMemberBinding="{Binding Order.OrderID}" />
+                        <GridViewColumn  Header="Дата заказа" 
+                                                 DisplayMemberBinding="{Binding Order.OrderDate}" />
+                        <GridViewColumn  Header="Сумма заказа" 
+                                                 DisplayMemberBinding="{Binding TotalSumma}"/>
+                        <GridViewColumn  Header="Сумма скидки (руб)" 
+                                                 DisplayMemberBinding="{Binding TotalDiscount}"/>
+                        <GridViewColumn  Header="Сумма скидки (%)"
+                                                 DisplayMemberBinding="{Binding TotalDiscountPercent, 
+                                                                                             StringFormat={}{0:F2}}"/>
+                        <GridViewColumn  Header="ФИО получателя" 
+                                                 DisplayMemberBinding="{Binding Order.OrderClient}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!--Под списком заказов-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Отображение структуры заказа-->
+                <GroupBox Header="Состав выбранного заказа" Grid.Column="0">
+                    <ListView Background="#f9f3ee" x:Name="listViewOrder">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Артикль товара"
+                                                        DisplayMemberBinding="{Binding ProductArticle}"/>
+                                <GridViewColumn Header="Количество товара в заказе" 
+                                                        DisplayMemberBinding="{Binding ProductCount}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+
+                <!--Для редактирования заказа-->
+                <GroupBox Grid.Column="1" Header="Редактирование данных заказа">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Дата доставки заказа" Margin="20 10"/>
+                            <DatePicker Name="dateDelivery"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Статус заказа" Margin="20 10"/>
+                            <ComboBox Name="cbStatus" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <Button x:Name="butEditOrder" Content="Сохранение изменений" Margin="50 10" 
+                              Style="{StaticResource Title}" Click="butEditOrder_Click" Background="#FFFF9A9A" Foreground="White"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <!--Верхняя часть для сортировки и фильтрации-->
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock x:Name="tbCount"  Text="Количество заказов"
+                            Style="{StaticResource Normal}"/>
+                <TextBlock Text="Сортировка по стоимости" Style="{StaticResource Normal}"/>
+                <ComboBox Name ="cbSort" SelectedIndex="0" Style="{StaticResource Normal}" 
+                              SelectionChanged="cbSort_SelectionChanged">
+                    <ComboBoxItem Content="Без сортировки"/>
+                    <ComboBoxItem Content="По возрастанию"/>
+                    <ComboBoxItem Content="По убыванию"/>
+                </ComboBox>
+                <TextBlock Text="Фильтрация по скидке" Style="{StaticResource Normal}"/>
+                <ComboBox Name="cbFilterDiscount" SelectedIndex="0" Style="{StaticResource Normal}" 
+                              SelectionChanged="cbFilterDiscount_SelectionChanged">
+                    <ComboBoxItem Content="Все диапазоны"/>
+                    <ComboBoxItem Content="0-2.99%"/>
+                    <ComboBoxItem Content="3-4.99%"/>
+                    <ComboBoxItem Content="от 5%"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,98 @@
+﻿<Window x:Class="BooksSharp.View.EditCatalog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksSharp.View"
+        mc:Ignorable="d"
+               Title="Редактирование каталога" Height="450" Width="800" Loaded="Window_Loaded" MinHeight="450" MinWidth="800">
+    <Grid Background="#f9f3ee">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Заголовок-->
+        <Grid Grid.Row="0"  Background="#b48d71">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="/Resources/logo.png" Stretch="Fill" Width="80" />
+            <TextBlock x:Name="tbTitle" Text="Добавление товара" Grid.Column="1" 
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Style="{StaticResource Title}" Foreground="Black"/>
+            <Button Name="buttonNavigation" Grid.Column="2" Background="#FFFF9A9A" 
+            Content="Назад" Margin="15" Style="{StaticResource Title}" Foreground="White" 
+            Click="buttonNavigation_Click" />
+        </Grid>
+
+        <!--Функционал-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Поля товара-->
+            <UniformGrid Grid.Column="0" Columns="2" Rows="12">
+                <Button Visibility="Hidden"/>
+                <Button Visibility="Hidden"/>
+                <TextBlock Text="Артикль" Style="{StaticResource Normal}" HorizontalAlignment="Right" 
+                             Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbArt" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Наименовние" Style="{StaticResource Normal}" 
+                            HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbName" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Производитель" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <ComboBox Name="cbManuf" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Поставщик" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <ComboBox Name="cbProv" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Категория" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <ComboBox Name="cbCat" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Единицы изменения" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <ComboBox Name="cbUnit" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Стоимость" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbCost" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Мак.скидка" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMaxDisc" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Дейст.скидка" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbCurDisc" Style="{StaticResource Normal}" Margin="10 0"/>
+                <TextBlock Text="Количество" Style="{StaticResource Normal}" 
+                             HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbCount" Style="{StaticResource Normal}" Margin="10 0"/>
+            </UniformGrid>
+
+            <!--Поля описания и фото товара-->
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="imagePhoto" Grid.Row="0" Stretch="Uniform" Margin="20 10" 
+                     Source="/Resources/picture.png"/>
+                <Button x:Name="butSelectPhoto" Content="Выбрать фото ..." Grid.Row="1" 
+                      Style="{StaticResource Normal}" Margin="20 0" Click="butSelectPhoto_Click" Background="#FFFF9A9A" Foreground="White"/>
+                <TextBlock Grid.Row="2" Text="Описание товара" Style="{StaticResource Normal}"
+                            HorizontalAlignment="Center" Margin="0 0" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbDiscr" Grid.Row="3" Text="Текст описания товара" 
+                         Style="{StaticResource Normal}" TextWrapping ="Wrap" AcceptsReturn ="True"
+                        AcceptsTab ="True" FontSize="12" VerticalScrollBarVisibility="Visible" 
+                        HorizontalScrollBarVisibility="Auto"/>
+                <Button x:Name="butSaveInDB" Grid.Row="4" Content="Сохранить" 
+                      Style="{StaticResource Title}" Margin="20 10" Click="butSaveInDB_Click"  Background="#FFFF9A9A" Foreground="White"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -24,7 +24,7 @@
             <TextBlock Text="Работа с заказами" Style="{StaticResource Title}" Grid.Column="1"/>
             <Button x:Name="buttonNavigate" Style="{StaticResource Title}" Content="Назад" 
                                    Grid.Column="2" HorizontalAlignment="Stretch" Margin="20,0,20,0" 
-                                   Height="52" Click="buttonNavigate_Click" Background="#FFFF9A9A" Foreground="White"/>
+                                   Height="52" Click="buttonNavigate_Click" Background="#FFCD6272" Foreground="White"/>
         </Grid>
 
         <!--Функциональная часть-->
@@ -90,7 +90,7 @@
                             <ComboBox Name="cbStatus" HorizontalAlignment="Stretch"/>
                         </StackPanel>
                         <Button x:Name="butEditOrder" Content="Сохранение изменений" Margin="50 10" 
-                              Style="{StaticResource Title}" Click="butEditOrder_Click" Background="#FFFF9A9A" Foreground="White"/>
+                              Style="{StaticResource Title}" Click="butEditOrder_Click" Background="#FFCD6272" Foreground="White"/>
                     </StackPanel>
                 </GroupBox>
             </Grid>

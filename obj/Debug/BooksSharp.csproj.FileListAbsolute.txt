@@ -36,3 +36,4 @@ D:\УчПрактикаПриложение\BooksSharp\BooksSharp\obj\Debug\View
 D:\УчПрактикаПриложение\BooksSharp\BooksSharp\obj\Debug\View\Order.baml
 D:\УчПрактикаПриложение\BooksSharp\BooksSharp\obj\Debug\View\WorkOrder.baml
 D:\УчПрактикаПриложение\BooksSharp\BooksSharp\obj\Debug\BooksSharp.csproj.CopyComplete
+D:\УчПрактикаПриложение\BooksSharp\BooksSharp\obj\Debug\BooksSharp.csproj.ResolveComReference.cache

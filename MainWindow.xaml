@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Source="/Resources/logo.png" Stretch="Fill"  Width="80"/>
             <TextBlock Text="Авторизация"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Title}"/>
-            <Button x:Name="buttonNavigation" Grid.Column="2" Background="#FFFF9A9A" Content="Выход" Margin="15" Style="{StaticResource Title}" Foreground="White" Click="buttonNavigation_Click" />
+            <Button x:Name="buttonNavigation" Grid.Column="2" Background="#FFCD6272" Content="Выход" Margin="15" Style="{StaticResource Title}" Foreground="White" Click="buttonNavigation_Click" />
         </Grid>
         <Grid Grid.Row="1" x:Name="gridMain" Background="#f9f3ee">
             <Grid.RowDefinitions>
@@ -51,8 +51,8 @@
                       Grid.Row="3" Text="" Margin="20,0,0,0" Width="227" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
             <easy:Captcha x:Name="captcha"  Visibility="Hidden"  Width="200"    Height="50" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20"/>
-            <Button x:Name="buttonGuest" Grid.Column="0" Grid.Row="4" Background="#FFFF9A9A" Content="Гость" Margin="200, 20, 15, 20" Style="{StaticResource Normal}" Foreground="White" Click="buttonGuest_Click" />
-            <Button x:Name="buttonEnter" Grid.Column="1" Grid.Row="4" Background="#FFFF9A9A" Content="Войти" Margin="15, 20, 200, 20" Style="{StaticResource Normal}" Foreground="White" Click="buttonEnter_Click" />
+            <Button x:Name="buttonGuest" Grid.Column="0" Grid.Row="4" Background="#FFCD6272" Content="Гость" Margin="200, 20, 15, 20" Style="{StaticResource Normal}" Foreground="White" Click="buttonGuest_Click" />
+            <Button x:Name="buttonEnter" Grid.Column="1" Grid.Row="4" Background="#FFCD6272" Content="Войти" Margin="15, 20, 200, 20" Style="{StaticResource Normal}" Foreground="White" Click="buttonEnter_Click" />
 
 
         </Grid>

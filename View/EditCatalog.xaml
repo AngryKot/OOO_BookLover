@@ -23,7 +23,7 @@
             <TextBlock x:Name="tbTitle" Text="Добавление товара" Grid.Column="1" 
                         VerticalAlignment="Center" HorizontalAlignment="Center"
                         Style="{StaticResource Title}" Foreground="Black"/>
-            <Button Name="buttonNavigation" Grid.Column="2" Background="#FFFF9A9A" 
+            <Button Name="buttonNavigation" Grid.Column="2" Background="#FFCD6272" 
             Content="Назад" Margin="15" Style="{StaticResource Title}" Foreground="White" 
             Click="buttonNavigation_Click" />
         </Grid>
@@ -83,7 +83,7 @@
                 <Image x:Name="imagePhoto" Grid.Row="0" Stretch="Uniform" Margin="20 10" 
                      Source="/Resources/picture.png"/>
                 <Button x:Name="butSelectPhoto" Content="Выбрать фото ..." Grid.Row="1" 
-                      Style="{StaticResource Normal}" Margin="20 0" Click="butSelectPhoto_Click" Background="#FFFF9A9A" Foreground="White"/>
+                      Style="{StaticResource Normal}" Margin="20 0" Click="butSelectPhoto_Click" Background="#FFCD6272" Foreground="White"/>
                 <TextBlock Grid.Row="2" Text="Описание товара" Style="{StaticResource Normal}"
                             HorizontalAlignment="Center" Margin="0 0" VerticalAlignment="Center"/>
                 <TextBox x:Name="tbDiscr" Grid.Row="3" Text="Текст описания товара" 
@@ -91,7 +91,7 @@
                         AcceptsTab ="True" FontSize="12" VerticalScrollBarVisibility="Visible" 
                         HorizontalScrollBarVisibility="Auto"/>
                 <Button x:Name="butSaveInDB" Grid.Row="4" Content="Сохранить" 
-                      Style="{StaticResource Title}" Margin="20 10" Click="butSaveInDB_Click"  Background="#FFFF9A9A" Foreground="White"/>
+                      Style="{StaticResource Title}" Margin="20 10" Click="butSaveInDB_Click"  Background="#FFCD6272" Foreground="White"/>
             </Grid>
         </Grid>
     </Grid>
